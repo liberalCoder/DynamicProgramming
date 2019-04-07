@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Leetcode494",
+            "request": "launch",
+            "mainClass": "naizam.o1knapSack01.Leetcode494",
+            "projectName": "DynamicProgramming_91868cbf"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Leetcode416",
+            "request": "launch",
+            "mainClass": "naizam.o1knapSack01.Leetcode416",
+            "projectName": "DynamicProgramming_91868cbf"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
             "mainClass": "naizam.o1knapSack01.Solution",

@@ -19,7 +19,7 @@ import java.util.*;
     We are asked to find out the maximum profit within a capacity of 5
 */
 
-public class Solution{
+public class Introduction{
 
     private int bruteForce(int[] values, int [] weights, int capacity, int start){
         /*
@@ -150,9 +150,9 @@ public class Solution{
         */
 
         /*
-          Time complexity -> O(N*C) We made sure that we do not recusrse for the same combination of
-                        start and capacity, we can safely say that our worst case time is N*C
-          Space complexity -> O(N*C), memoization cost.
+          Time complexity -> O(N*C) We build a n*c array
+          Space complexity -> O(N*C), dp array cost. If we observe clearly, we could further optimize
+          the space. We only need to keep track of two rows to generate the array. So it will be enough to have two rows at any point.
         */
         int [][] dp = new int[values.length][capacity+1];
 
@@ -184,15 +184,38 @@ public class Solution{
             }
         }
 
+        int currentCapacity = capacity;
+        //optionally, we can print selected items
+        for(int i=weights.length-1; i>=0; i--){
+            
+            if(currentCapacity ==0){
+                break;
+            }
+
+            int result = dp[i][currentCapacity];
+            int prev = 0;
+            if(i>0){
+                prev = dp[i-1][currentCapacity];
+            } 
+
+            if(result == prev){
+                //we did not select the current one
+            }
+            else{
+                System.out.println("Selected "+ values[i]);
+                currentCapacity = currentCapacity - weights[i];
+            }
+        }
+        
         return dp[weights.length-1][capacity];
     }
 
     public static void main (String[] args){
-        int [] values = {60, 100, 120};
-        int [] weights = {10,20,30};
+        int [] values = {120, 60, 100};
+        int [] weights = {30, 10, 20};
         int maxCapacity = 50;
 
-        Solution solution = new Solution();
+        Introduction solution = new Introduction();
 
         long startTime = System.currentTimeMillis();
         int result = solution.bruteForce(values, weights, maxCapacity, 0);
