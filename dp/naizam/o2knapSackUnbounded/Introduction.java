@@ -159,8 +159,14 @@ public class Introduction{
 
         /*
           Time complexity -> O(N*C) We build a n*c array
-          Space complexity -> O(N*C), dp array cost. If we observe clearly, we could further optimize
+          Space complexity -> O(N*C), dp array cost. 
+          If we observe clearly, we could further optimize
           the space. We only need to keep track of two rows to generate the array. So it will be enough to have two rows at any point.
+          No!! Observe again. All we want is some previous value in the current row+ the current value in the previous row.
+          So we ideally only need one row of space. Try optimizing your solution to use only space n.
+
+          Tip:- For an 0/1 knapsack, you need space of 2 rows. But for unbounded knapsack, you need only
+          space of one row. Think why!!
         */
         int [][] dp = new int[values.length][capacity+1];
 
